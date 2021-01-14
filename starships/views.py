@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from starships.models import Starship
+from starships.serializers import StarshipSerializer
+
+
+class StarshipList(generics.ListAPIView):
+    queryset = Starship.objects.all()
+    serializer_class = StarshipSerializer
